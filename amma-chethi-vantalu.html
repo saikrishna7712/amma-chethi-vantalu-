@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amma Chethi Vantalu — Dosapadu, Krishna District</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #7A2A2A;
+    --maroon-deep: #5C1F1F;
+    --gold: #C98A1F;
+    --gold-light: #E7B44E;
+    --green: #45593A;
+    --ivory: #F7EFDE;
+    --ivory-2: #EFE3C8;
+    --ink: #2B2018;
+    --ink-soft: #5A4B3E;
+    --card-bg: #FFFDF8;
+    --border-soft: rgba(43,32,24,0.14);
+
+    --bg: var(--ivory);
+    --surface: var(--card-bg);
+    --text: var(--ink);
+    --text-soft: var(--ink-soft);
+    --accent: var(--maroon);
+    --accent-2: var(--gold);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1E1712;
+      --surface: #29201A;
+      --text: #F3E9D8;
+      --text-soft: #C9B79E;
+      --border-soft: rgba(243,233,216,0.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1E1712;
+    --surface: #29201A;
+    --text: #F3E9D8;
+    --text-soft: #C9B79E;
+    --border-soft: rgba(243,233,216,0.14);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Work Sans', system-ui, -apple-system, sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  a { color: inherit; }
+  img { max-width: 100%; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+    background: var(--bg); border-bottom: 1px solid var(--border-soft);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .brand-name { font-family: 'Fraunces', serif; font-size: 1.12rem; font-weight: 700; line-height: 1.15; }
+  .brand-sub { font-size: 0.7rem; color: var(--text-soft); margin-top: 1px; }
+  nav { display: flex; gap: 26px; }
+  nav a { text-decoration: none; font-size: 0.92rem; color: var(--text-soft); border-bottom: 2px solid transparent; padding-bottom: 2px; white-space: nowrap; }
+  nav a:hover { color: var(--accent); border-color: var(--accent-2); }
+
+  .hero { background: var(--maroon-deep); color: var(--ivory); position: relative; overflow: hidden; }
+  .hero-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; padding: 68px 24px 60px; }
+  .hero-tag { font-size: 0.88rem; color: var(--gold-light); font-weight: 600; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.1; color: #FBF3E3; }
+  .hero p { margin-top: 18px; font-size: 1.02rem; color: #E9D9BE; max-width: 46ch; }
+  .hero-actions { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 3px; font-size: 0.94rem; font-weight: 600; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform 0.15s ease; }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: var(--gold); color: #2B1B05; }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost { background: transparent; border-color: rgba(251,243,227,0.4); color: #FBF3E3; }
+  .btn-ghost:hover { border-color: #FBF3E3; }
+  .hero-art { display: flex; justify-content: center; }
+
+  .strip { background: var(--ivory-2); border-bottom: 1px solid var(--border-soft); }
+  .strip-inner { display: flex; gap: 40px; padding: 16px 24px; overflow-x: auto; font-size: 0.86rem; color: var(--ink); }
+  .strip-item { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex: none; }
+
+  .section { padding: 60px 0; }
+  .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 30px; flex-wrap: wrap; }
+  .section-head h2 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); }
+  .section-head p { color: var(--text-soft); max-width: 46ch; margin-top: 8px; }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--border-soft); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+  .card-media { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, var(--ivory-2), var(--ivory)); }
+  .card-body { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .card-tag { font-size: 0.7rem; color: var(--green); font-weight: 600; }
+  .card-tag.nonveg { color: var(--maroon); }
+  .card-tag.combo { color: var(--gold); }
+  .card-title { font-family: 'Fraunces', serif; font-size: 1.08rem; font-weight: 600; }
+  .card-desc { font-size: 0.84rem; color: var(--text-soft); flex: 1; }
+  .card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--border-soft); gap: 10px; }
+  .price { font-weight: 700; font-family: 'Fraunces', serif; font-size: 1rem; }
+  .price span { font-size: 0.74rem; color: var(--text-soft); font-family: 'Work Sans', sans-serif; font-weight: 400; }
+  .order-btn { font-size: 0.78rem; font-weight: 600; padding: 8px 13px; border-radius: 3px; background: var(--maroon); color: #FBF3E3; border: none; text-decoration: none; cursor: pointer; white-space: nowrap; }
+  .order-btn:hover { background: var(--maroon-deep); }
+  .combo .order-btn { background: var(--gold); color: #2B1B05; }
+  .combo .order-btn:hover { background: var(--gold-light); }
+
+  .story { background: var(--ivory-2); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
+  .story-inner { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: center; padding: 60px 24px; }
+  .story h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 18px; }
+  .story p { color: var(--text-soft); margin-bottom: 14px; max-width: 54ch; }
+  .story-stats { display: flex; gap: 36px; margin-top: 22px; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 1.7rem; color: var(--maroon); }
+  .stat-label { font-size: 0.78rem; color: var(--text-soft); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .step { border: 1px solid var(--border-soft); border-radius: 6px; padding: 20px; background: var(--surface); }
+  .step-num { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 8px; }
+  .step h3 { font-size: 1rem; margin-bottom: 6px; }
+  .step p { font-size: 0.86rem; color: var(--text-soft); margin: 0; }
+
+  footer { background: var(--maroon-deep); color: #E9D9BE; padding: 44px 0 calc(26px + env(safe-area-inset-bottom, 0px)); }
+  .footer-inner { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  footer h3 { color: #FBF3E3; font-size: 1rem; margin-bottom: 10px; }
+  footer a { text-decoration: none; color: #E9D9BE; font-size: 0.88rem; }
+  footer a:hover { color: var(--gold-light); }
+  .footer-links { display: flex; flex-direction: column; gap: 8px; }
+  .footer-bottom { margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(233,217,190,0.2); font-size: 0.76rem; color: #C9AF8C; }
+
+  .mobile-order { display: none; }
+
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 44px 20px 36px; text-align: left; }
+    .hero-art { order: -1; }
+    nav { display: none; }
+    .story-inner { grid-template-columns: 1fr; padding: 44px 20px; }
+    .grid, .grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 26px; }
+    body { padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+    .mobile-order {
+      display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 60;
+      background: var(--surface); border-top: 1px solid var(--border-soft);
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); justify-content: center;
+    }
+    .mobile-order a { width: 100%; justify-content: center; }
+  }
+  @media (max-width: 540px) {
+    .grid, .grid.cols-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 40 40" fill="none" style="flex:none;">
+        <rect x="10" y="14" width="20" height="20" rx="3" fill="#7A2A2A"/>
+        <rect x="14" y="8" width="12" height="7" rx="2" fill="#C98A1F"/>
+        <rect x="13" y="19" width="14" height="10" rx="1.5" fill="#F7EFDE" opacity="0.9"/>
+      </svg>
+      <div>
+        <div class="brand-name">Amma Chethi Vantalu</div>
+        <div class="brand-sub">Homemade · Dosapadu, Krishna District</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#veg">Veg Pickles</a>
+      <a href="#nonveg">Non-Veg Pickles</a>
+      <a href="#snacks">Snacks</a>
+      <a href="#combos">Combo Packs</a>
+      <a href="#order">How to Order</a>
+    </nav>
+    <a href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Order Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner wrap">
+    <div>
+      <div class="hero-tag">Amma Chethi Vantalu — "Mother's hand-cooked food"</div>
+      <h1>Pickles and snacks made the way your grandmother made them</h1>
+      <p>Sun-dried, hand-cut, small-batch. No preservatives, no shortcuts — just mango, gongura, chilli, and time. Made in Dosapadu, Peddaparupudi Mandal, and couriered anywhere in India.</p>
+      <div class="hero-actions">
+        <a href="#veg" class="btn btn-primary">See the menu</a>
+        <a href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20place%20an%20order." class="btn btn-ghost" target="_blank" rel="noopener">Order on WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg width="260" height="300" viewBox="0 0 260 300" fill="none">
+        <ellipse cx="130" cy="275" rx="90" ry="14" fill="#3A160F" opacity="0.35"/>
+        <rect x="60" y="70" width="140" height="185" rx="18" fill="#E7B44E"/>
+        <rect x="60" y="70" width="140" height="185" rx="18" fill="url(#g1)"/>
+        <rect x="72" y="95" width="116" height="140" rx="10" fill="#8A2E2E" opacity="0.92"/>
+        <rect x="80" y="140" width="20" height="20" rx="3" fill="#C98A1F" opacity="0.5"/>
+        <rect x="110" y="160" width="16" height="16" rx="3" fill="#F7EFDE" opacity="0.3"/>
+        <rect x="140" y="130" width="18" height="18" rx="3" fill="#C98A1F" opacity="0.4"/>
+        <rect x="95" y="45" width="70" height="35" rx="6" fill="#5C1F1F"/>
+        <rect x="105" y="20" width="50" height="30" rx="14" fill="#456B4A"/>
+        <circle cx="200" cy="120" r="16" fill="#7A2A2A"/>
+        <path d="M200 108 C205 100 212 100 214 92" stroke="#456B4A" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <circle cx="45" cy="200" r="12" fill="#8A2E2E"/>
+        <path d="M45 190 C49 183 55 183 56 176" stroke="#456B4A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="g1" x1="60" y1="70" x2="200" y2="255" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F0C878"/><stop offset="1" stop-color="#C98A1F"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner wrap">
+    <div class="strip-item"><span class="dot"></span>Free local delivery above ₹799 in Peddaparupudi Mandal</div>
+    <div class="strip-item"><span class="dot"></span>Flat ₹100 courier, anywhere in India</div>
+    <div class="strip-item"><span class="dot"></span>Made fresh weekly, no preservatives</div>
+    <div class="strip-item"><span class="dot"></span>Veg &amp; non-veg pickles, snacks, combos</div>
+    <div class="strip-item"><span class="dot"></span>Cash, UPI or online transfer</div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="section" id="veg">
+    <div class="section-head">
+      <div>
+        <h2>🥒 Veg Pickles</h2>
+        <p>Cut and cured the traditional way, in small jars so every batch stays fresh.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="#C98A1F"/><path d="M45 20a25 25 0 100 50 25 25 0 000-50z" fill="#E7B44E"/><path d="M30 45h30M45 30v30" stroke="#7A2A2A" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">VEG · SPICY</span>
+          <h3 class="card-title">Mango Pickle</h3>
+          <p class="card-desc">Raw mango cut into chunks, cured in mustard, red chilli and sesame oil.</p>
+          <div class="card-foot">
+            <div class="price">₹320 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Mango%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="#E7B44E"/><circle cx="45" cy="45" r="20" fill="#F7EFDE"/><circle cx="45" cy="45" r="6" fill="#C98A1F"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">VEG · TANGY</span>
+          <h3 class="card-title">Lemon Pickle</h3>
+          <p class="card-desc">Whole lemons pickled in their own juice with fenugreek and mustard seed.</p>
+          <div class="card-foot">
+            <div class="price">₹250 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Lemon%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="#8A2E2E"/><circle cx="34" cy="45" r="15" fill="#456B4A"/><circle cx="54" cy="45" r="12" fill="#C98A1F"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">VEG · TANGY</span>
+          <h3 class="card-title">Tomato + Gongura Pickle</h3>
+          <p class="card-desc">Sorrel leaves and ripe tomato cooked down together with garlic and red chilli.</p>
+          <div class="card-foot">
+            <div class="price">₹290 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Tomato%2BGongura%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="#456B4A"/><path d="M45 15a30 30 0 00-8 59 30 30 0 0016-59 29.9 29.9 0 00-8 0z" fill="#5E8560"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">VEG · TANGY</span>
+          <h3 class="card-title">Gongura Pickle</h3>
+          <p class="card-desc">Sorrel leaves slow-cooked with garlic and red chilli — a Telangana classic.</p>
+          <div class="card-foot">
+            <div class="price">₹280 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Gongura%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="nonveg">
+    <div class="section-head">
+      <div>
+        <h2>🍗 Non-Veg Pickles</h2>
+        <p>Cooked in small batches with pure oil, refrigerate after opening.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="#8A2E2E"/><path d="M30 50c5-15 25-15 30 0-5 10-25 10-30 0z" fill="#C98A1F"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag nonveg">NON-VEG · SPICY</span>
+          <h3 class="card-title">Chicken Pickle</h3>
+          <p class="card-desc">Boneless chicken slow-cooked in red chilli and spices, sealed in oil.</p>
+          <div class="card-foot">
+            <div class="price">₹420 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Chicken%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="#7A2A2A"/><rect x="28" y="35" width="34" height="20" rx="6" fill="#C98A1F"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag nonveg">NON-VEG · RICH</span>
+          <h3 class="card-title">Mutton Pickle</h3>
+          <p class="card-desc">Tender mutton pieces cooked low and slow in a deep red masala.</p>
+          <div class="card-foot">
+            <div class="price">₹550 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Mutton%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><ellipse cx="45" cy="45" rx="34" ry="20" fill="#5C1F1F"/><path d="M75 45l14-10v20z" fill="#C98A1F"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag nonveg">NON-VEG · SPICY</span>
+          <h3 class="card-title">Fish Pickle</h3>
+          <p class="card-desc">Firm fish pieces marinated in tamarind and red chilli, fried and pickled.</p>
+          <div class="card-foot">
+            <div class="price">₹450 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Fish%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="38" fill="#5C1F1F"/><path d="M25 45c8-10 32-10 40 0-8 10-32 10-40 0z" fill="#E7B44E"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag nonveg">NON-VEG · SPICY</span>
+          <h3 class="card-title">Prawn Pickle</h3>
+          <p class="card-desc">Fresh prawns marinated and cooked with ginger-garlic and Guntur chilli.</p>
+          <div class="card-foot">
+            <div class="price">₹480 <span>/500g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Prawn%20Pickle%20(500g).">Order</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="snacks">
+    <div class="section-head">
+      <div>
+        <h2>🍘 Snacks</h2>
+        <p>Crunchy, fried fresh in small batches — great with evening tea.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="45" cy="45" r="30" fill="none" stroke="#C98A1F" stroke-width="8"/><circle cx="45" cy="45" r="16" fill="none" stroke="#8A2E2E" stroke-width="6"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">SNACK · SAVOURY</span>
+          <h3 class="card-title">Murukku</h3>
+          <p class="card-desc">Crisp rice-flour spirals with sesame and cumin, fried till golden.</p>
+          <div class="card-foot">
+            <div class="price">₹180 <span>/250g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Murukku%20(250g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="30" cy="35" r="9" fill="#C98A1F"/><circle cx="50" cy="30" r="9" fill="#E7B44E"/><circle cx="60" cy="50" r="9" fill="#C98A1F"/><circle cx="38" cy="55" r="9" fill="#8A2E2E"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">SNACK · MIXED</span>
+          <h3 class="card-title">Mixture</h3>
+          <p class="card-desc">A crunchy blend of fried gram-flour drops, peanuts, curry leaves and spices.</p>
+          <div class="card-foot">
+            <div class="price">₹160 <span>/250g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Mixture%20(250g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><rect x="20" y="20" width="50" height="50" rx="10" fill="#E7B44E"/><rect x="30" y="30" width="30" height="30" rx="6" fill="#7A2A2A"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">SNACK · SAVOURY</span>
+          <h3 class="card-title">Chekkalu</h3>
+          <p class="card-desc">Telugu-style rice crackers with peanuts and curry leaves, deep-fried and crunchy.</p>
+          <div class="card-foot">
+            <div class="price">₹160 <span>/250g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Chekkalu%20(250g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><rect x="22" y="22" width="46" height="46" rx="23" fill="#C98A1F"/><rect x="32" y="32" width="26" height="26" rx="13" fill="#7A2A2A"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">SNACK · SAVOURY</span>
+          <h3 class="card-title">Chekodilu</h3>
+          <p class="card-desc">Ring-shaped rice crackers, crisp outside with a light savoury crunch throughout.</p>
+          <div class="card-foot">
+            <div class="price">₹170 <span>/250g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Chekodilu%20(250g).">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><circle cx="35" cy="35" r="8" fill="#E7B44E"/><circle cx="55" cy="35" r="8" fill="#C98A1F"/><circle cx="35" cy="55" r="8" fill="#C98A1F"/><circle cx="55" cy="55" r="8" fill="#E7B44E"/><circle cx="45" cy="45" r="8" fill="#8A2E2E"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag">SNACK · SAVOURY</span>
+          <h3 class="card-title">Boondi</h3>
+          <p class="card-desc">Tiny fried gram-flour drops seasoned with curry leaves and spices.</p>
+          <div class="card-foot">
+            <div class="price">₹150 <span>/250g</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20Boondi%20(250g).">Order</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="combos">
+    <div class="section-head">
+      <div>
+        <h2>🎁 Combo Packs</h2>
+        <p>Mix-and-taste sets — the easiest way to try everything, and better value than buying separately.</p>
+      </div>
+    </div>
+    <div class="grid cols-3">
+      <article class="card combo">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><rect x="18" y="30" width="24" height="40" rx="4" fill="#C98A1F"/><rect x="48" y="30" width="24" height="40" rx="4" fill="#456B4A"/><rect x="24" y="18" width="12" height="14" rx="3" fill="#7A2A2A"/><rect x="54" y="18" width="12" height="14" rx="3" fill="#5C1F1F"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag combo">COMBO</span>
+          <h3 class="card-title">Veg Combo</h3>
+          <p class="card-desc">All 4 veg pickles — Mango, Lemon, Tomato+Gongura, Gongura — 250g each.</p>
+          <div class="card-foot">
+            <div class="price">₹650 <span>/pack</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20the%20Veg%20Combo%20pack.">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card combo">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><rect x="18" y="30" width="24" height="40" rx="4" fill="#8A2E2E"/><rect x="48" y="30" width="24" height="40" rx="4" fill="#7A2A2A"/><rect x="24" y="18" width="12" height="14" rx="3" fill="#5C1F1F"/><rect x="54" y="18" width="12" height="14" rx="3" fill="#C98A1F"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag combo">COMBO</span>
+          <h3 class="card-title">Non-Veg Combo</h3>
+          <p class="card-desc">All 4 non-veg pickles — Chicken, Mutton, Fish, Prawn — 250g each.</p>
+          <div class="card-foot">
+            <div class="price">₹950 <span>/pack</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20the%20Non-Veg%20Combo%20pack.">Order</a>
+          </div>
+        </div>
+      </article>
+      <article class="card combo">
+        <div class="card-media"><svg width="80" height="80" viewBox="0 0 90 90"><rect x="18" y="30" width="24" height="40" rx="4" fill="#C98A1F"/><rect x="48" y="30" width="24" height="40" rx="4" fill="#E7B44E"/><circle cx="30" cy="22" r="7" fill="#7A2A2A"/><circle cx="60" cy="22" r="7" fill="#456B4A"/></svg></div>
+        <div class="card-body">
+          <span class="card-tag combo">COMBO</span>
+          <h3 class="card-title">Pickle + Snacks Combo</h3>
+          <p class="card-desc">Any 2 pickles of your choice (250g each) with 2 snacks (200g each).</p>
+          <div class="card-foot">
+            <div class="price">₹550 <span>/pack</span></div>
+            <a class="order-btn" target="_blank" rel="noopener" href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20order%20the%20Pickle%2BSnacks%20Combo%20pack.">Order</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<section class="story">
+  <div class="story-inner wrap">
+    <svg width="100%" height="240" viewBox="0 0 320 260" fill="none">
+      <rect x="20" y="30" width="90" height="120" rx="8" fill="#8A2E2E"/>
+      <rect x="30" y="15" width="70" height="20" rx="6" fill="#5C1F1F"/>
+      <rect x="130" y="60" width="90" height="120" rx="8" fill="#C98A1F"/>
+      <rect x="140" y="45" width="70" height="20" rx="6" fill="#7A2A2A"/>
+      <rect x="220" y="90" width="80" height="100" rx="8" fill="#456B4A"/>
+      <rect x="230" y="75" width="60" height="20" rx="6" fill="#354A2C"/>
+    </svg>
+    <div>
+      <h2>From one kitchen in Dosapadu to yours</h2>
+      <p>Amma Chethi Vantalu means "mother's hand-cooked food" — and that's exactly what we make. Every recipe here has been in the family for generations, the same ratios of chilli, oil and salt, just made in bigger batches now.</p>
+      <p>We still cut every mango by hand and sun-dry every batch of chilli ourselves, so what reaches your table tastes like it came from a home kitchen, not a factory.</p>
+      <div class="story-stats">
+        <div><div class="stat-num">17</div><div class="stat-label">Items on the menu</div></div>
+        <div><div class="stat-num">3</div><div class="stat-label">Combo packs</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Homemade</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="order">
+  <div class="section-head">
+    <div>
+      <h2>How to order</h2>
+      <p>No app, no login — just message us. We deliver locally in Peddaparupudi Mandal and courier anywhere else in India.</p>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Pick your items</h3>
+      <p>Tap "Order" on any product above, or list everything you want in one WhatsApp message — mention your city if it's outside Peddaparupudi Mandal.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We confirm on WhatsApp</h3>
+      <p>We reply with the total plus ₹100 flat courier (if outstation), and expected delivery date.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Pay and receive</h3>
+      <p>Pay by UPI or cash on delivery locally, or UPI/bank transfer before dispatch for courier orders. Orders above ₹799 are delivered free within Peddaparupudi Mandal; outstation orders are shipped by courier anywhere in India for a flat ₹100.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <h3>Amma Chethi Vantalu</h3>
+      <p style="max-width:32ch;font-size:0.88rem;color:#C9AF8C;">Homemade veg &amp; non-veg pickles, snacks and combo packs, made fresh in Dosapadu and couriered anywhere in India.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Contact</h3>
+      <a href="https://wa.me/919550446661" target="_blank" rel="noopener">WhatsApp: +91 95504 46661</a>
+      <a href="tel:+919550446661">Call: +91 95504 46661</a>
+      <span style="font-size:0.85rem;color:#C9AF8C;line-height:1.5;">Dosapadu, Peddaparupudi Mandal,<br>Krishna District, AP 521321</span>
+    </div>
+    <div class="footer-links">
+      <h3>Menu</h3>
+      <a href="#veg">Veg Pickles</a>
+      <a href="#nonveg">Non-Veg Pickles</a>
+      <a href="#snacks">Snacks</a>
+      <a href="#combos">Combo Packs</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    Sample site built with Claude — prices shown are typical market rates; adjust them to your actual costs before sharing.
+  </div>
+</footer>
+
+<div class="mobile-order">
+  <a href="https://wa.me/919550446661?text=Hi!%20I%27d%20like%20to%20place%20an%20order." class="btn btn-primary" target="_blank" rel="noopener">Order on WhatsApp</a>
+</div>
+
+</body>
+</html>
